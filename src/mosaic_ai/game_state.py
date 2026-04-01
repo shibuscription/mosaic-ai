@@ -52,6 +52,12 @@ class GameState:
         validate_coordinate(level, x, y)
         self.board[level][y][x] = occupant
 
+    def is_empty(self, level: int, x: int, y: int) -> bool:
+        return self.occupant_at(level, x, y) == Occupant.EMPTY
+
+    def is_occupied(self, level: int, x: int, y: int) -> bool:
+        return self.occupant_at(level, x, y) != Occupant.EMPTY
+
     def clone(self) -> "GameState":
         return GameState(
             board=[[row[:] for row in level_rows] for level_rows in self.board],
